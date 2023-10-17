@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.ranking-table {
+  width: 50vw;
+}
+
+.button-bar {
+  display: flex;
+  gap:2vw;
+}
+
+.even-row {
+  background-color: rgb(81, 81, 84);
+}
