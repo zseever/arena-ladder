@@ -2,16 +2,83 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.epic {
+  color:purple;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.equipment-cont {
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  align-items:flex-start;
+  height:40vh;
 }
+
+.item-icon {
+  width:57px;
+  height:57px;
+  border:3px solid purple;
+  font-size:10px;
+}
+
+.item-cont {
+  display:flex;
+  justify-content: flex-start;
+}
+
+
+.spec-glyph-cont {
+  border:1px solid white;
+  border-radius: 5px;
+  width:25vw;
+}
+
+.ranking-table {
+  border:2px solid black;
+  border-radius:1%;
+}
+
+.char-link {
+  text-decoration: none;
+  color: rgb(0, 229, 255);
+}
+
+.char-link:visited {
+  color: rgb(0, 229, 255);
+}
+
+
+.button-bar {
+  background-color: #797979;
+  padding:0.2%;
+  border-radius:5%;
+  border:2px solid black;
+  margin-bottom: 1%;
+  width:30%;
+}
+
+.button-bar > button {
+  background-color: #282c34;
+  color: rgb(0, 229, 255);
+  width:20%;
+  cursor:pointer;
+}
+
+.button-bar > button:hover {
+  background-color: rgb(23, 46, 70);
+  border-color: white;
+}
+
+.char-data-cont {
+  width:75%;
+}
+
+.spec-cont {
+  display:flex;
+  justify-content: space-evenly;
+}
+
 
 .App-header {
   background-color: #282c34;
@@ -24,18 +91,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 .ranking-table {
   width: 50vw;
