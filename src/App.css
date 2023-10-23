@@ -6,6 +6,10 @@
   color:purple;
 }
 
+.legendary {
+  color:orange;
+}
+
 .equipment-cont {
   display:flex;
   flex-direction: column;

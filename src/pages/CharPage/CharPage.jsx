@@ -4,21 +4,18 @@ import Gear from '../../components/Gear'
 import Avatar from '../../components/Avatar'
 import TalentTrees from '../../components/TalentTrees/TalentTrees'
 
-export default function CharPage( props ) { 
-    const apiKey = props.apiKey
-    const xData = useLocation()
+export default function CharPage() { 
+    const location = useLocation()
+    const state = location.state
 
     return (
         <div className="char-data-cont">
-            {xData ? 
             <>
-                <div>{xData.state.name}</div>
-                <Avatar apiKey={apiKey} charData={{charName: xData.state.name, server: xData.state.server, region: xData.state.region}}/>
-                <Gear apiKey={apiKey} charData={{charName: xData.state.name, server: xData.state.server, region: xData.state.region}}/>
-                <Specializations apiKey={apiKey} charData={{charName: xData.state.name, server: xData.state.server, region: xData.state.region}} />
+                <div>{state.charName}</div>
+                <Avatar charData={state}/>
+                <Gear charData={state}/>
+                <Specializations charData={state} />
             </>
-            : <></>
-            }
         </div>
     )
 }

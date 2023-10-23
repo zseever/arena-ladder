@@ -1,27 +1,24 @@
 import { useEffect, useState } from "react"
 import GearItem from "./GearItem"
+import * as WoWAPI from '../utilities/WoWAPI'
 
 export default function Gear( props ) {
-    const apiKey = props.apiKey
     const charDetails = props.charData
     const [charData, setCharData] = useState()
 
-    useEffect(function() {
-        async function fetchGear(charName, server, rgn) {
-            const url = `https://${ rgn === '1' ? 'us' : 'eu'}.api.blizzard.com/profile/wow/character/${server}/${charName.toLowerCase()}/equipment?namespace=profile-classic-${ rgn === '1' ? 'us' : 'eu'}&locale=en_US&access_token=${apiKey}`
-            const charResults = await fetch(url)
-            const jsonData = await charResults.json()
-            setCharData(jsonData)
+    useEffect(() => {
+        async function getData() {
+            const gearData = await WoWAPI.fetchGear(charDetails.charName, charDetails.server, charDetails.region)
+            setCharData(gearData)
         }
-        fetchGear(charDetails.charName, charDetails.server, charDetails.region)
-        console.log(charData)
+        getData()
     },[])
 
     return (
         <div className="equipment-cont">
-        {charData && charData.equipped_items.map((item,idx) => 
-            <GearItem apiKey={apiKey} item={item} region={charDetails.region}/>
-        )}
+            {charData && charData.equipped_items.map((item,idx) => 
+                <GearItem item={item} region={charDetails.region}/>
+            )}
         </div>
     )
 }

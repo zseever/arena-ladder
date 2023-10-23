@@ -1,22 +1,18 @@
 import { useState, useEffect } from "react"
+import * as WoWAPI from '../utilities/WoWAPI'
 
 export default function Specializations( props ) {
     const apiKey = props.apiKey
     const charDetails = props.charData
     const [charData, setCharData] = useState()
 
-    useEffect(function() {
-        async function fetchSpec(charName, server, rgn) {
-            const url = `https://${ rgn === '1' ? 'us' : 'eu'}.api.blizzard.com/profile/wow/character/${server}/${charName.toLowerCase()}/specializations?namespace=profile-classic-${ rgn === '1' ? 'us' : 'eu'}&locale=en_US&access_token=${apiKey}`
-            const charResults = await fetch(url)
-            const jsonData = await charResults.json()
-            setCharData(jsonData)
+    useEffect(() => {
+        async function getData() {
+            const specData = await WoWAPI.fetchSpec(charDetails.charName, charDetails.server, charDetails.region)
+            setCharData(specData)
         }
-        fetchSpec(charDetails.charName, charDetails.server, charDetails.region)
+        getData()
     },[])
-
-    console.log(charData)
-
 
     return (
         <>

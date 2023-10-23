@@ -1,20 +1,17 @@
 import {useEffect, useState} from 'react'
+import * as WoWAPI from '../utilities/WoWAPI'
 
 export default function GearItem( props ) {
-    const apiKey = props.apiKey
     const item = props.item
     const region = props.region
     const [gearIcon, setGearIcon] = useState()
 
-    useEffect(function() {
-        async function fetchGearIcon(itemId, rgn) {
-            const url = `https://${ rgn === '1' ? 'us' : 'eu'}.api.blizzard.com/data/wow/media/item/${itemId}?namespace=static-3.4.3_51505-classic-${ rgn === '1' ? 'us' : 'eu'}&locale=en_US&access_token=${apiKey}`
-            const charResults = await fetch(url)
-            const jsonData = await charResults.json()
-            setGearIcon(jsonData)
+    useEffect(() => {
+        async function getData() {
+            const gearIconData = await WoWAPI.fetchGearIcon(item.media.id, region)
+            setGearIcon(gearIconData)
         }
-        fetchGearIcon(item.media.id, region)
-        console.log(gearIcon)
+        getData()
     },[])
 
 

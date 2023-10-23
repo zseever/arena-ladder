@@ -1,26 +1,19 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import * as WoWAPI from '../../utilities/WoWAPI.js'
 
 
-export default function LeaderPage( props ) {
-    const apiKey = props.apiKey
+export default function LeaderPage() {
     const [data, setData] = useState([])
     const [bracket, setBracket] = useState('2v2')
     const [region, setRegion] = useState('1')
-
-    async function fetchData(brkt, rgn) {
-      const url = `https:/${ rgn === '1' ? 'us' : 'eu'}.api.blizzard.com/data/wow/pvp-region/${rgn}/pvp-season/8/pvp-leaderboard/${brkt}?namespace=dynamic-classic-${rgn === '1' ? 'us' : 'eu'}&locale=en_US&access_token=${apiKey}`
-      const arenaResults = await fetch(url)
-      const jsonData = await arenaResults.json()
-      setData(jsonData.entries)
-    }
   
-    useEffect(function() {
-      fetchData(bracket, region)
-    }, [])
-  
-    useEffect(function() {
-      fetchData(bracket, region)
+    useEffect(() => {
+        async function getData() {
+            const leaderData = await WoWAPI.fetchData(bracket, region)
+            setData(leaderData)
+        }
+        getData()
     }, [bracket, region])
 
     return (
@@ -50,7 +43,7 @@ export default function LeaderPage( props ) {
                 <tbody>
                 { data.length && data.slice(0,50).map((char,idx) => 
                     <tr className={idx % 2 === 0 ? 'even-row' : 'odd-row'} key={char.character.name}>
-                        <td><Link to='/hello' className='char-link' state={{ name: char.character.name, server: char.character.realm.slug, region: region}}>{char.character.name}</Link></td>
+                        <td><Link to='/hello' className='char-link' state={{ charName: char.character.name, server: char.character.realm.slug, region: region}}>{char.character.name}</Link></td>
                         <td>{char.character.realm.slug[0].toUpperCase() + char.character.realm.slug.slice(1).toLowerCase()}</td>
                         <td>{char.faction.type[0].toUpperCase() + char.faction.type.slice(1).toLowerCase()}</td>
                         <td>{char.rank}</td>
