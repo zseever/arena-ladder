@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import * as WoWAPI from '../utilities/WoWAPI'
+import TalentTrees from "./TalentTrees/TalentTrees"
 
 export default function Specializations( props ) {
     const apiKey = props.apiKey
@@ -14,6 +15,8 @@ export default function Specializations( props ) {
         getData()
     },[])
 
+    // console.log(charData)
+
     return (
         <>
         <div>Specializations</div>
@@ -23,13 +26,18 @@ export default function Specializations( props ) {
                     <div key={'spec-'+idx}>
                         <div>Spec #{idx+1}</div>
                             {specs.specializations.map((talentTree,idx) => 
+                            <>
+                                {talentTree.specialization_name === 'Fury' ? <TalentTrees talents={talentTree}/> : ''}
                             <div>
+                                {/* <TalentTrees talents={talentTree}/> */}
                                 <div>Tree: {talentTree.specialization_name} ({talentTree.spent_points})</div>
                                 {talentTree.talents.map((talent,idx) => 
                                 <div>{talent.spell_tooltip.spell.name}({talent.talent_rank})</div>
                                 )}
                                 <br></br>
                             </div>
+                            </>
+
                             )}
                         <br></br>
                     </div>

@@ -2,6 +2,31 @@
   text-align: center;
 }
 
+.talent-row {
+  width:50%;
+  display:flex;
+  justify-content: space-around;
+  padding-bottom: 1vh;
+}
+
+.talent-icon {
+  width:55px;
+  height:55px;
+  display:flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.talent-ranks-box {
+  background: black;
+  width:50%;
+  height:30%;
+  font-size:12px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .epic {
   color:purple;
 }

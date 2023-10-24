@@ -1,16 +1,16 @@
-import ArmsTree from "./Warrior/Arms/ArmsTree"
+import FuryTree from "./Warrior/Fury/FuryTree"
 
-export default function TalentTrees( ) {
+export default function TalentTrees( props ) {
     // const charClass = props.charClass
-    // const talents = props.talents
-    const charClass = 'warlock'
+    const talents = props.talents
+    const charClass = 'warrior'
 
 
     return (
         <div>
             {charClass === 'warrior' ? 
             <>
-            <ArmsTree />
+            <FuryTree talents={talents}/>
             </>
             : charClass === 'druid' ?
             'Druid'
