@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import * as WoWAPI from '../utilities/WoWAPI'
 import TalentTrees from "./TalentTrees/TalentTrees"
+import Glyphs from "./Glyphs/Glyphs"
 
 export default function Specializations( props ) {
-    const apiKey = props.apiKey
     const charDetails = props.charData
     const [charData, setCharData] = useState()
+    const [specSelect, setSpecSelect] = useState(true)
 
     useEffect(() => {
         async function getData() {
@@ -15,40 +16,35 @@ export default function Specializations( props ) {
         getData()
     },[])
 
-    // console.log(charData)
+    function toggleSpecSelect() {
+        let visibleSpec = !specSelect
+        setSpecSelect(visibleSpec)
+    }
 
     return (
-        <>
-        <div>Specializations</div>
-        <div className="spec-cont">
-            {charData && charData.specialization_groups.map((specs,idx) => 
-                <div className="spec-glyph-cont">
-                    <div key={'spec-'+idx}>
-                        <div>Spec #{idx+1}</div>
-                            {specs.specializations.map((talentTree,idx) => 
-                            <>
-                                {talentTree.specialization_name === 'Fury' ? <TalentTrees talents={talentTree}/> : ''}
-                            <div>
-                                {/* <TalentTrees talents={talentTree}/> */}
-                                <div>Tree: {talentTree.specialization_name} ({talentTree.spent_points})</div>
-                                {talentTree.talents.map((talent,idx) => 
-                                <div>{talent.spell_tooltip.spell.name}({talent.talent_rank})</div>
-                                )}
-                                <br></br>
-                            </div>
-                            </>
+        <div className="full-talent-cont">
+            <div>Talents</div>
+            <div className="spec-display-toggle-cont">
+                <div>{specSelect === true ? 'Primary Spec' : 'Alternate Spec'}</div>
+                <button className='spec-button' onClick={() => toggleSpecSelect()}>{specSelect === true ? 'Show Alternate Spec' : 'Show Primary Spec'}</button>
+            </div>
+            <div className="spec-cont">
+                {charData && charData.specialization_groups.map((specs,idx) => 
+                    <>
+                    {specs.is_active === specSelect ? 
+                        <div className={"spec-glyph-cont "+specs.is_active === specSelect ? 'active-spec' : 'inactive-spec'}>
+                            <TalentTrees talents={specs.specializations} />
+                            <Glyphs glyphs={specs.glyphs}/>
+                        </div>
+                        :
+                        ''
+                    }
 
-                            )}
-                        <br></br>
-                    </div>
-                    <div>
-                        <div>Glyphs</div>
-                        {specs.glyphs.map((glyph,idx) => <div>{glyph.name}</div>)}
-                    </div>
-                </div>
-            )}
+                    </>
+
+                )}
+            </div>
         </div>
-        </>
 
     )
 }

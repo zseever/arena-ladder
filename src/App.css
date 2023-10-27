@@ -2,8 +2,119 @@
   text-align: center;
 }
 
+.weapon-cont {
+  display:flex;
+}
+
+.right-armor-cont {
+  display:flex;
+  flex-direction: column;
+  align-items: end;
+  gap:10px;
+}
+
+.left-armor-cont {
+  display:flex;
+  flex-direction: column;
+  align-items:start;
+  gap:10px;
+}
+
+.item-cont {
+  display:flex;
+  justify-content: flex-start;
+}
+
+.right {
+  display:flex;
+  justify-content:flex-end;
+  width:700px;
+}
+
+.armor-cont {
+  width:45vw;
+  height:50vh;
+  display:flex;
+  justify-content: space-between;
+}
+
+.full-talent-cont {
+  width:910px;
+}
+
+.spec-display-toggle-cont {
+  display:flex;
+  justify-content: space-between;
+  margin-bottom:1px;
+}
+
+.spec-button {
+  width:150px;
+  height:50px;
+  background-color: rgb(91, 76, 123);
+  color:white;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.spec-button:hover {
+  cursor:pointer;
+  background-color: rgb(73, 52, 123);
+}
+
+
+.talent-tree-container {
+  display:flex;
+  justify-content: space-around;
+  padding-top:5px;
+  width:900px;
+  background-color: rgb(91, 76, 123);
+  border:5px solid black;
+}
+
+.glyph-cont {
+  display:flex;
+  align-items: center;
+  justify-content: flex-start;
+  width:250px;
+  font-size:16px;
+  font-weight: 700;
+  height:58px;
+  background-color: rgb(91, 76, 123);
+  border-radius:5px;
+  border:2px solid black;
+  box-shadow:3px 3px rgb(7, 7, 7);
+  color:white;
+}
+
+.glyphs-cont {
+  background-color:bisque;
+  color: black;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap:5px;
+  width:900px;
+  height:150px;
+  border:5px solid black;
+  border-width:0px 5px 5px 5px;
+  
+}
+
+.spec-container {
+  width:250px;
+  padding: 0px 25px;
+  border-left: 2px solid black;
+  font-size:24px;
+}
+
+.inactive-talent {
+  filter: grayscale(100%);
+}
+
 .talent-row {
-  width:50%;
+  width:100%;
   display:flex;
   justify-content: space-around;
   padding-bottom: 1vh;
@@ -15,6 +126,7 @@
   display:flex;
   justify-content: flex-end;
   align-items: flex-end;
+  box-shadow:3px 3px rgb(7, 7, 7);
 }
 
 .talent-ranks-box {
@@ -38,10 +150,10 @@
 .equipment-cont {
   display:flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content:space-between;
-  align-items:flex-start;
-  height:40vh;
+  align-items:center;
+  height:60vh;
+  width:45vw;
 }
 
 .item-icon {
@@ -51,16 +163,16 @@
   font-size:10px;
 }
 
-.item-cont {
-  display:flex;
-  justify-content: flex-start;
-}
+
 
 
 .spec-glyph-cont {
-  border:1px solid white;
+  border:1px solid black;
   border-radius: 5px;
-  width:25vw;
+  width:50vw;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ranking-table {
@@ -100,7 +212,10 @@
 }
 
 .char-data-cont {
-  width:75%;
+  width:75vw;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .spec-cont {

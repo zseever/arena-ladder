@@ -2,7 +2,6 @@ import {useLocation } from 'react-router-dom'
 import Specializations from '../../components/Specializations'
 import Gear from '../../components/Gear'
 import Avatar from '../../components/Avatar'
-import TalentTrees from '../../components/TalentTrees/TalentTrees'
 
 export default function CharPage() { 
     const location = useLocation()
