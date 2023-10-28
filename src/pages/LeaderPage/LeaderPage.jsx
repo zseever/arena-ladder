@@ -45,8 +45,8 @@ export default function LeaderPage() {
                 <tbody>
                 { data.length && data.slice(0,50).map((char,idx) => 
                     <tr className={idx % 2 === 0 ? 'even-row' : 'odd-row'} key={char.character.name}>
-                        {/* <td><Link to='/character' className='char-link' state={{ charName: char.character.name, server: char.character.realm.slug, region: region}}>{char.character.name}</Link></td> */}
-                        <td><Link to='/character' className='char-link' state={{ charName: 'Revolol', server: 'benediction', region: region}}>{char.character.name}</Link></td>
+                        <td><Link to='/character' className='char-link' state={{ charName: char.character.name, server: char.character.realm.slug, region: region}}>{char.character.name}</Link></td>
+                        {/* <td><Link to='/character' className='char-link' state={{ charName: 'Saintecho', server: 'whitemane', region: region}}>{char.character.name}</Link></td> */}
                         <td>{char.character.realm.slug[0].toUpperCase() + char.character.realm.slug.slice(1).toLowerCase()}</td>
                         <td>{char.faction.type[0].toUpperCase() + char.faction.type.slice(1).toLowerCase()}</td>
                         <td>{char.rank}</td>

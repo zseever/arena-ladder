@@ -2,8 +2,32 @@
   text-align: center;
 }
 
+
 .weapon-cont {
-  display:flex;
+  display:grid;
+  grid-template-columns: 10;
+  grid-template-rows: 1;
+  width:35vw;
+}
+
+.main_hand-slot {
+  grid-column-start: 6;
+  grid-column-end: 7;
+  grid-row:1;
+  justify-self: end
+}
+
+.off_hand-slot {
+  grid-column-start: 7;
+  grid-column-end: 8;
+  grid-row:1;
+  justify-self: start;
+}
+
+.ranged-slot {
+  grid-column-start: 9;
+  grid-column-end: 10;
+  grid-row:1;
 }
 
 .right-armor-cont {
@@ -152,8 +176,13 @@
   flex-direction: column;
   justify-content:space-between;
   align-items:center;
-  height:60vh;
+  height:75vh;
   width:45vw;
+  font-size:14px;
+  background-color: rgb(141, 109, 79);
+  padding: 1vh 1vw;
+  border-radius:5px;
+  border:3px solid black;
 }
 
 .item-icon {

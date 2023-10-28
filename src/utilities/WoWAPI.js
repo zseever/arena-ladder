@@ -1,4 +1,4 @@
-const apiKey = 'USH4fllFR6e8Dcmr7ugAQIB9b2oZSVAjl2'
+const apiKey = 'USyiL4b3hn8ugmPkwSnGXWFnfKKQxmK71J'
 
 export async function fetchData(brkt, rgn) {
     const url = `https:/${ rgn === '1' ? 'us' : 'eu'}.api.blizzard.com/data/wow/pvp-region/${rgn}/pvp-season/8/pvp-leaderboard/${brkt}?namespace=dynamic-classic-${rgn === '1' ? 'us' : 'eu'}&locale=en_US&access_token=${apiKey}`
