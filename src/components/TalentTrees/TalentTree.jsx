@@ -28,11 +28,10 @@ export default function TalentTree( props ) {
 
     return (
         <div className="spec-container">
-            {/* <div>{`${spec.toUpperCase()} (`+talents.spent_points+`)`}</div> */}
             <div>{spec.toUpperCase()} ( {points ?? 0} )</div>
         {rows.map((row) => 
             <div className={`talent-row`}>
-                {fullTalentList.map(talent => 
+                {fullTalentList.map((talent,idx) => 
                 <>
                     {talent.row === row ? <Talent talentName={talent.talentName} ranks={talentData[talent.talentName]} maxRanks={talent.maxRanks} imgName={talent.imgName} playableClass='warrior' spec={spec} /> : ''}
                 </>

@@ -3,6 +3,7 @@ import { AllTalents } from "../../utilities/AllTalents"
 
 export default function TalentTrees( props ) {
     // const charClass = props.charClass
+    const prevKey = props.treesKey
     const playerTalentTrees = props.talents
     const charClass = 'warrior'
     const classSpecList = AllTalents[charClass].specializations
@@ -21,8 +22,8 @@ export default function TalentTrees( props ) {
 
     return (
         <div className="talent-tree-container">
-            {classSpecList.map(spec =>
-                <TalentTree talents={playerTalents[spec] ?? []} spec={spec} points={playerTalents[spec+'-points']} />
+            {classSpecList.map((spec,idx) =>
+                <TalentTree key={`${prevKey}-talenttree-${idx}`} talents={playerTalents[spec] ?? []} spec={spec} points={playerTalents[spec+'-points']} />
             )}
         </div>
     )

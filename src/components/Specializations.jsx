@@ -21,6 +21,8 @@ export default function Specializations( props ) {
         setSpecSelect(visibleSpec)
     }
 
+    console.log(charData)
+
     return (
         <div className="full-talent-cont">
             <div>Talents</div>
@@ -31,17 +33,13 @@ export default function Specializations( props ) {
             <div className="spec-cont">
                 {charData && charData.specialization_groups.map((specs,idx) => 
                     <>
-                    {specs.is_active === specSelect ? 
-                        <div className={"spec-glyph-cont "+specs.is_active === specSelect ? 'active-spec' : 'inactive-spec'}>
-                            <TalentTrees talents={specs.specializations} />
-                            <Glyphs glyphs={specs.glyphs}/>
+                    {specs.is_active === specSelect && 
+                        <div key={'spec-'+idx} className={"spec-glyph-cont "+specs.is_active === specSelect ? 'active-spec' : 'inactive-spec'}>
+                            <TalentTrees key={'talenttrees-'+idx} treesKey={'talenttrees-'+idx} talents={specs.specializations} />
+                            <Glyphs key={'glyphs-'+idx} glyphs={specs.glyphs}/>
                         </div>
-                        :
-                        ''
                     }
-
                     </>
-
                 )}
             </div>
         </div>
