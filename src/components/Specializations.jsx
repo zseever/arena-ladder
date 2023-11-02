@@ -3,8 +3,7 @@ import * as WoWAPI from '../utilities/WoWAPI'
 import TalentTrees from "./TalentTrees/TalentTrees"
 import Glyphs from "./Glyphs/Glyphs"
 
-export default function Specializations( props ) {
-    const charDetails = props.charData
+export default function Specializations( { charDetails} ) {
     const [charData, setCharData] = useState()
     const [specSelect, setSpecSelect] = useState(true)
 

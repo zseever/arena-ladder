@@ -3,6 +3,7 @@ import {useLocation } from 'react-router-dom'
 import Specializations from '../../components/Specializations'
 import Gear from '../../components/Gear'
 import CharDisplay from '../../components/CharDisplay'
+import Parses from '../../components/Parses'
 import * as WoWAPI from '../../utilities/WoWAPI';
 
 export default function CharPage() { 
@@ -18,15 +19,13 @@ export default function CharPage() {
         getData()
     },[])
 
-    console.log(charSummary)
-
-
     return (
         <div className="char-data-cont">
             <>
-                <CharDisplay charData={state} charSummary={charSummary}/>
-                <Gear charData={state}/>
-                <Specializations charData={state} />
+                <CharDisplay charDetails={state} charSummary={charSummary}/>
+                <Gear charDetails={state}/>
+                <Specializations charDetails={state} />
+                <Parses charDetails={state }/>
             </>
         </div>
     )

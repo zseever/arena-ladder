@@ -1,5 +1,5 @@
 import TalentTree from "./TalentTree"
-import { AllTalents } from "../../utilities/AllTalents"
+import { AllTalents } from "../../utilities/Talents/AllTalents"
 
 export default function TalentTrees( props ) {
     // const charClass = props.charClass

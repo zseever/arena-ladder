@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react"
 import * as WoWAPI from '../utilities/WoWAPI'
 
-export default function CharDisplay( props ) {
-    const charDetails = props.charData
-    const charSummary = props.charSummary
+export default function CharDisplay( { charDetails, charSummary} ) {
     const titleDetails = charSummary && createNameTitle(charSummary.active_title.name, charDetails.charName)
     const [charData, setCharData] = useState()
 
@@ -27,7 +25,6 @@ export default function CharDisplay( props ) {
                     result['first'] = 'title'
                 }
                 titleArr.splice(i,1)
-        
             }
         }
         result['title'] = titleArr.join(' ')
@@ -58,8 +55,7 @@ export default function CharDisplay( props ) {
                         <div className="char-name">{charDetails.charName}</div> 
                         <div className="guild-name">{`< ${charSummary.guild.name} >`} </div>
                     </div>
-                } 
-                
+                }                 
             </div>
             <div className="vert-col"></div>
             {charSummary ? 

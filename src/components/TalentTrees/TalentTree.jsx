@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { AllTalents } from '../../utilities/AllTalents';
+import { AllTalents } from '../../utilities/Talents/AllTalents';
 import Talent from './Talent';
 
 export default function TalentTree( props ) {
