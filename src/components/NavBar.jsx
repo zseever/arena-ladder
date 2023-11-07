@@ -7,10 +7,9 @@ export default function NavBar() {
             <div>Classic Armory</div>
             <div className="links-cont">
                 <Link className="nav-link" to='/'>Home</Link>
-                <Link className="nav-link" to='/'>AnotherLink</Link>
+                <Link className="nav-link" to='/leaderboard'>Leaderboard</Link>
                 <Link className="nav-link" to='/'>AnotherLink</Link>
             </div>
-            {/* <Link to='/hello'></Link>> */}
         </div>    
     )
 }

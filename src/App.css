@@ -2,8 +2,6 @@
   text-align: center;
 }
 
-
-
 .empty-gear-slot {
   width:62px;
   height:62px;
@@ -40,7 +38,6 @@
   border-radius:5px;
   align-self:center;
   justify-self:center;
-  /* padding-left:15px; */
 }
 
 .flex {
@@ -48,8 +45,19 @@
 }
 
 .flex-col {
+  display:flex;
   flex-direction: column;
 }
+
+.flex-row {
+  display:flex;
+  flex-direction: row;
+}
+
+.space-btwn {
+  justify-content: space-between;
+}
+
 
 .nav-bar {
   width:100%;
@@ -133,7 +141,7 @@
   background-image: url('/public/textured-bg.jpg');
   background-position: 25% 75%;
   border: 1px solid black;
-  font-size:14px;
+  font-size:12px;
 }
 
 .weapon-cont {
@@ -401,8 +409,9 @@ button.selected {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: flex-start;
+  font-size: 20px;
+  /* font-size: calc(10px + 2vmin); */
   color: white;
   background-image: url('/public/ep_naturalblack.jpg');
   /* background-image: url('/public/stardust.png'); */
@@ -478,5 +487,43 @@ button.selected {
 }
 
 .boss-name-col {
-  /* text-align: left; */
+  text-align: left;
+}
+
+.talent-wowhead-link {
+  color:white;
+  text-decoration: none;
+}
+
+.search-cont {
+  width:280px;
+  height:30px;
+}
+
+.region-select {
+  width:169px;
+  text-align: center;
+}
+
+.search-button {
+  width:280px;
+  background-color: rgba(0, 0, 0, 0.423);
+  color:white;
+  border:1px solid white;
+}
+
+.stats-container {
+  width:900px;
+  height:150px;
+  align-items: center;
+  background-image: url('/public/textured-bg.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  border: 3px solid rgb(0, 229, 255);
+  border-radius:5px;
+}
+
+.logo-small {
+  height:30px;
+  width:25px;
 }

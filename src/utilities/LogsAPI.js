@@ -20,7 +20,5 @@ export async function fetchLogs(name, server, region) {
     for (const prop in bestParses) {
         bestParseArr.push(bestParses[prop])
     }
-
-    console.log(bestParseArr)
     return bestParseArr
 }

@@ -4,6 +4,7 @@ import Specializations from '../../components/Specializations'
 import Gear from '../../components/Gear'
 import CharDisplay from '../../components/CharDisplay'
 import Parses from '../../components/Parses'
+import Stats from '../../components/Stats'
 import * as WoWAPI from '../../utilities/WoWAPI';
 
 export default function CharPage() { 
@@ -24,6 +25,7 @@ export default function CharPage() {
             <>
                 <CharDisplay charDetails={state} charSummary={charSummary}/>
                 <Gear charDetails={state}/>
+                <Stats charDetails={state}/>
                 <Specializations charDetails={state} />
                 <Parses charDetails={state }/>
             </>

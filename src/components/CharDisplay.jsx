@@ -4,14 +4,24 @@ import * as WoWAPI from '../utilities/WoWAPI'
 export default function CharDisplay( { charDetails, charSummary} ) {
     const titleDetails = charSummary && createNameTitle(charSummary.active_title.name, charDetails.charName)
     const [charData, setCharData] = useState()
+    const [loginDate, setLoginDate] = useState()
 
     useEffect(() => {
         async function getData() {
-            const avatarData = await WoWAPI.fetchAvatar(charDetails.charName, charDetails.server, charDetails.region)
+            const avatarData = await WoWAPI.fetchAvatar(charDetails.charName, charDetails.server.toLowerCase(), charDetails.region)
             setCharData(avatarData)
         }
         getData()
+
     },[])
+
+    useEffect(() => {
+        if (charSummary?.last_login_timestamp) {
+            let lastLogin = new Date(charSummary.last_login_timestamp)
+            lastLogin = lastLogin.getMonth() + 1 + '-' + lastLogin.getDate() + '-' + lastLogin.getFullYear()
+            setLoginDate(lastLogin)
+        }
+    },[charSummary])
 
     function createNameTitle(title, charName) {
         let result = {}
@@ -31,11 +41,10 @@ export default function CharDisplay( { charDetails, charSummary} ) {
         return result
     }
 
-
     return (
         <div className="flex full-char-details-cont">
             <div className="char-details-cont">
-                {charDetails.faction === 'ALLIANCE' ?
+                {charSummary?.faction && charSummary.faction.type === 'ALLIANCE' ?
                     <img src={'/alliancelogo.png'} className="alliance-logo"></img>
                     :
                     <img src={'/hordelogo.png'} className="horde-logo"></img>
@@ -45,7 +54,7 @@ export default function CharDisplay( { charDetails, charSummary} ) {
                     <div>
                         <div className="char-name">{charDetails.charName}</div> 
                         <div className="char-title">{titleDetails.title}</div> 
-                        <div className="guild-name">{`< ${charSummary.guild.name} >`} </div>
+                        <div className="guild-name">{`< ${charSummary.hasOwnProperty('guild') ? charSummary.guild.name : ''} >`}</div>
                     </div>
                     </>
                 }   
@@ -53,7 +62,7 @@ export default function CharDisplay( { charDetails, charSummary} ) {
                     <div>
                         <div className="char-title">{titleDetails.title}</div> 
                         <div className="char-name">{charDetails.charName}</div> 
-                        <div className="guild-name">{`< ${charSummary.guild.name} >`} </div>
+                        <div className="guild-name">{`< ${charSummary.hasOwnProperty('guild') ? charSummary.guild.name : ''} >`}</div>
                     </div>
                 }                 
             </div>
@@ -63,6 +72,7 @@ export default function CharDisplay( { charDetails, charSummary} ) {
                     <div>Level {charSummary.level} {charSummary.race.name} {charSummary.character_class.name} - {charSummary.realm.name}</div>
                     <div>Item Level: {charSummary.equipped_item_level}</div>
                     <div>Achievement Points: {charSummary.achievement_points}</div>
+                    <div>Last Logged in: {loginDate}</div>
                 </div>
                 :
                 <div></div>

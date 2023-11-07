@@ -20,7 +20,6 @@ export default function Specializations( { charDetails} ) {
         setSpecSelect(visibleSpec)
     }
 
-    console.log(charData)
 
     return (
         <div className="full-talent-cont">

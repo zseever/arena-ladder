@@ -1,4 +1,4 @@
-const apiKey = 'USMyXscujM1vo1D5Rse1XGHpOb16yMTvSY'
+const apiKey = 'USQlZykdBAXmLn052chcyCulGDw4gKF4ix'
 
 export async function fetchData(brkt, rgn) {
     const url = `https:/${ rgn === '1' ? 'us' : 'eu'}.api.blizzard.com/data/wow/pvp-region/${rgn}/pvp-season/8/pvp-leaderboard/${brkt}?namespace=dynamic-classic-${rgn === '1' ? 'us' : 'eu'}&locale=en_US&access_token=${apiKey}`
@@ -46,6 +46,15 @@ export async function fetchAvatar(charName, server, rgn) {
 
 export async function fetchCharSummary(charName, server, rgn) {
     const url = `https://${ rgn === '1' ? 'us' : 'eu'}.api.blizzard.com/profile/wow/character/${server}/${charName.toLowerCase()}?namespace=profile-classic-${ rgn === '1' ? 'us' : 'eu'}&locale=en_US&access_token=${apiKey}`
+    const charResults = await fetch(url)
+    const jsonData = await charResults.json()
+    if (jsonData) {
+        return jsonData
+    }
+}
+
+export async function fetchCharStats(charName, server, rgn) {
+    const url = `https://${ rgn === '1' ? 'us' : 'eu'}.api.blizzard.com/profile/wow/character/${server}/${charName.toLowerCase()}/statistics?namespace=profile-classic-${ rgn === '1' ? 'us' : 'eu'}&locale=en_US&access_token=${apiKey}`
     const charResults = await fetch(url)
     const jsonData = await charResults.json()
     if (jsonData) {
