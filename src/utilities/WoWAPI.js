@@ -1,4 +1,4 @@
-const apiKey = 'USQlZykdBAXmLn052chcyCulGDw4gKF4ix'
+const apiKey = 'USzMovgdLP7V6hIAIFFGWaQRo488Yz8HbL'
 
 export async function fetchData(brkt, rgn) {
     const url = `https:/${ rgn === '1' ? 'us' : 'eu'}.api.blizzard.com/data/wow/pvp-region/${rgn}/pvp-season/8/pvp-leaderboard/${brkt}?namespace=dynamic-classic-${rgn === '1' ? 'us' : 'eu'}&locale=en_US&access_token=${apiKey}`
@@ -59,6 +59,29 @@ export async function fetchCharStats(charName, server, rgn) {
     const jsonData = await charResults.json()
     if (jsonData) {
         return jsonData
+    }
+}
+
+export async function fetchCharStatistics(charName, server, rgn) {
+    const url = `https://${ rgn === '1' ? 'us' : 'eu'}.api.blizzard.com/profile/wow/character/${server}/${charName.toLowerCase()}/achievements/statistics?namespace=profile-classic-${ rgn === '1' ? 'us' : 'eu'}&locale=en_US&access_token=${apiKey}`
+    const charResults = await fetch(url)
+    const jsonData = await charResults.json()
+    if (jsonData) {
+        return jsonData
+    }
+}
+
+export async function fetchPvpStats(charName, server, rgn) {
+    let promises = []
+    let brackets = ['2v2','3v3','5v5']
+    let result = []
+    for (let i = 0; i < brackets.length; i++) {
+        const url = `https://${ rgn === '1' ? 'us' : 'eu'}.api.blizzard.com/profile/wow/character/${server}/${charName.toLowerCase()}/pvp-bracket/${brackets[i]}?namespace=profile-classic-${ rgn === '1' ? 'us' : 'eu'}&locale=en_US&access_token=${apiKey}`
+        const charResults = await fetch(url)
+        result.push(await charResults.json())
+    }
+    if (result) {
+        return result
     }
 }
 

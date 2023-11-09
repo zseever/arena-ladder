@@ -527,3 +527,42 @@ button.selected {
   height:30px;
   width:25px;
 }
+
+.char-toggle-cont {
+  width:900px;
+  display:flex;
+  justify-content: space-between;
+}
+
+.char-toggle-button {
+  width:150px;
+  background-color: rgba(0, 0, 0, 0.423);
+  color:white;
+  border:1px solid white;
+}
+
+.pvp-stats-cont {
+  width:900px;
+  height:300px;
+  justify-content: space-between;
+  border: 3px solid rgb(0, 229, 255);
+  border-radius:5px;
+}
+
+.pvp-stats {
+  width:300px;
+  height:300px;
+  border: 1px solid rgb(0, 229, 255);
+  justify-content: space-around;
+  align-items: center;
+}
+
+.full-statistics-cont {
+  width:900px;
+}
+
+.statistics-cont {
+  width:900px;
+  height:40px;
+  border: 1px solid rgb(0, 229, 255);
+}
