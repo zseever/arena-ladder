@@ -501,7 +501,7 @@ button.selected {
 }
 
 .region-select {
-  width:169px;
+  width:177px;
   text-align: center;
 }
 
@@ -514,13 +514,14 @@ button.selected {
 
 .stats-container {
   width:900px;
-  height:150px;
+  height:250px;
   align-items: center;
   background-image: url('/public/textured-bg.jpg');
   background-repeat: no-repeat;
   background-size:cover;
   border: 3px solid rgb(0, 229, 255);
   border-radius:5px;
+  align-items: flex-start;
 }
 
 .logo-small {
@@ -598,4 +599,14 @@ button.selected {
 
 .bracket-name-text {
   font-size:24px;
+}
+
+.stat-container {
+  height:250px;
+  color:black;
+}
+
+.bold-title {
+  font-weight: 700;
+  text-decoration: underline;
 }

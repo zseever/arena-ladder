@@ -85,6 +85,20 @@ export async function fetchPvpStats(charName, server, rgn) {
     }
 }
 
+export async function fetchTokenPrice() {
+    let promises = []
+    let result = []
+    promises.push(fetch(`https://us.api.blizzard.com/data/wow/token/index?namespace=dynamic-classic-us&locale=en_US&access_token=${apiKey}`))
+    promises.push(fetch(`https://eu.api.blizzard.com/data/wow/token/index?namespace=dynamic-classic-eu&locale=en_US&access_token=${apiKey}`))
+    let data = await Promise.all(promises)
+    for (let i = 0; i < data.length; i++ ) {
+        let tempData = await data[i].json()
+        result = [...result,tempData]
+    }
+    return result
+}
+
+
 export async function fetchDataNew(dataType, region,) {
 
 }
