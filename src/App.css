@@ -544,9 +544,13 @@ button.selected {
 .pvp-stats-cont {
   width:900px;
   height:300px;
-  justify-content: space-between;
+  justify-content: flex-start;
   border: 3px solid rgb(0, 229, 255);
   border-radius:5px;
+  background-image: url('/public/textured-bg.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: 0% 0%;
 }
 
 .pvp-stats {
@@ -555,6 +559,8 @@ button.selected {
   border: 1px solid rgb(0, 229, 255);
   justify-content: space-around;
   align-items: center;
+  color:black;  
+  font-weight:700;
 }
 
 .full-statistics-cont {
@@ -565,4 +571,31 @@ button.selected {
   width:900px;
   height:40px;
   border: 1px solid rgb(0, 229, 255);
+  background-image: url('/public/textured-bg.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: 50% 75%;
+  text-align: center;
+  font-size:24px;
+  font-weight: 700;
+}
+
+.win-text {
+  color:green;
+  font-size:24px;
+}
+
+.loss-text {
+  color:red;
+  font-size:24px;
+}
+
+.rating-text {
+  font-size:34px;
+  font-weight:700;
+  color:gold;
+}
+
+.bracket-name-text {
+  font-size:24px;
 }

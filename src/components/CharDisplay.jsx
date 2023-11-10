@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import * as WoWAPI from '../utilities/WoWAPI'
 
 export default function CharDisplay( { charDetails, charSummary} ) {
-    const titleDetails = charSummary && createNameTitle(charSummary.active_title.name, charDetails.charName)
+    let title = charSummary?.active_title?.name ? charSummary.active_title.name : '%s'
+    const titleDetails = charSummary && createNameTitle(title, charDetails.charName)
     const [charData, setCharData] = useState()
     const [loginDate, setLoginDate] = useState()
 
