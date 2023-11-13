@@ -13,7 +13,6 @@ export default function CharDisplay( { charDetails, charSummary} ) {
             setCharData(avatarData)
         }
         getData()
-
     },[])
 
     useEffect(() => {

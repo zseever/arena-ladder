@@ -1,6 +1,11 @@
 import * as WoWAPI from './WoWAPI'
+let memo = {}
 
 export async function getGearInformation(name,server,region) {
+    let key = `${name}-${server}-${region}`
+    if (memo.key) {
+        return memo.key
+    }
     const gearLookup = {}
     const itemLocation = {}
     const promises = []
@@ -11,14 +16,16 @@ export async function getGearInformation(name,server,region) {
         promises.push(WoWAPI.fetchItemData(item.media.id))
     })
     const data = await Promise.all(promises)
-    data.forEach((data) => {
-        result = [...result, data]
-    })
+    for (let i=0; i < data.length; i++) {
+        let temp = await data[i].json()
+        result = [...result, temp]
+    }
     for (const property in gearLookup) {
         itemLocation[gearLookup[property].id] = property 
     }
     result.forEach(res=> {
         gearLookup[itemLocation[res.id]].itemLevel = res.level
     })
-    return gearLookup
+    memo[key] = gearLookup
+    return memo[key]
 }

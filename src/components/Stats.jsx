@@ -7,7 +7,6 @@ export default function Stats({ charDetails }) {
     useEffect(() => {
         async function getData() {
             const statsData = await WoWAPI.fetchCharStats(charDetails.charName, charDetails.server, charDetails.region)
-            console.log(statsData)
             setStats(statsData)
         }
         getData()

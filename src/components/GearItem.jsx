@@ -4,6 +4,7 @@ import * as ItemLayout from '../utilities/ItemLayout'
 
 export default function GearItem( {item, slot, orientation, region} ) {
     const [gearIcon, setGearIcon] = useState()
+    
 
     useEffect(() => {
         async function getData() {

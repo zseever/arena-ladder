@@ -11,7 +11,7 @@ export default function LeaderPage() {
     useEffect(() => {
         async function getData() {
             const leaderData = await WoWAPI.fetchData(bracket, region)
-            setData(leaderData)
+            setData(leaderData.entries)
         }
         getData()
     }, [bracket, region])
