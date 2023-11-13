@@ -43,7 +43,7 @@ export default function CharDisplay( { charDetails, charSummary} ) {
 
     return (
         <div className="flex full-char-details-cont">
-            <div className="char-details-cont">
+            <div className="char-details-cont char-details-cont-size">
                 {charSummary?.faction && charSummary.faction.type === 'ALLIANCE' ?
                     <img src={'/alliancelogo.png'} className="alliance-logo"></img>
                     :
@@ -52,33 +52,36 @@ export default function CharDisplay( { charDetails, charSummary} ) {
                 {titleDetails && titleDetails.first === 'name' && 
                     <>
                     <div>
-                        <div className="char-name">{charDetails.charName}</div> 
+                        <div className={`char-name ${charSummary?.character_class.name.toLowerCase()}-color`}>{charDetails.charName}</div> 
                         <div className="char-title">{titleDetails.title}</div> 
-                        <div className="guild-name">{`< ${charSummary.hasOwnProperty('guild') ? charSummary.guild.name : ''} >`}</div>
+                        <div className="guild-name">{`${charSummary.hasOwnProperty('guild') ? '<'+charSummary.guild.name+'>' : ''}`}</div>
                     </div>
                     </>
                 }   
                 {titleDetails && titleDetails.first === 'title' && 
                     <div>
                         <div className="char-title">{titleDetails.title}</div> 
-                        <div className="char-name">{charDetails.charName}</div> 
+                        <div className={`char-name ${charSummary?.character_class.name.split(' ').join('').toLowerCase()}-color`}>{charDetails.charName}</div> 
                         <div className="guild-name">{`< ${charSummary.hasOwnProperty('guild') ? charSummary.guild.name : ''} >`}</div>
                     </div>
                 }                 
             </div>
-            <div className="vert-col"></div>
+            {/* <div className="vert-col"></div> */}
             {charSummary ? 
-                <div className="char-details-display">
-                    <div>Level {charSummary.level} {charSummary.race.name} {charSummary.character_class.name} - {charSummary.realm.name}</div>
-                    <div>Item Level: {charSummary.equipped_item_level}</div>
-                    <div>Achievement Points: {charSummary.achievement_points}</div>
-                    <div>Last Logged in: {loginDate}</div>
+                <div className="char-details-display char-details-cont-size">
+                    <div>ACHV: {charSummary.achievement_points} | ILVL: {charSummary.equipped_item_level} </div>
+                    <div>{charSummary.level} {charSummary.race.name} {charSummary.character_class.name} - {charSummary.realm.name}</div>
+                    {/* <div>Item Level: {charSummary.equipped_item_level}</div>
+                    <div>Achievement Points: {charSummary.achievement_points}</div> */}
+                    <div>Last Login: {loginDate}</div>
                 </div>
                 :
                 <div></div>
             }
-            <div className="vert-col"></div>
-            {!charData ? '' : !charData.assets ? '' :<img className="ava-test" src={charData.assets[0].value}></img>}       
+            {/* <div className="vert-col"></div> */}
+            <div className="char-details-cont-size avatar-cont">
+             {!charData ? '' : !charData.assets ? '' :<img className="ava-test" src={charData.assets[0].value}></img>}       
+            </div>
         </div>
     )
 }

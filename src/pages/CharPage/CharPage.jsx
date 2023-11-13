@@ -23,6 +23,8 @@ export default function CharPage() {
         getData()
     },[])
 
+    console.log(charSummary)
+
 
     return (
         <div className="char-data-cont">

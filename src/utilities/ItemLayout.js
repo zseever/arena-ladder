@@ -1,3 +1,15 @@
+const gemSrc = {
+    'amber': true,
+    'zul':true,
+    'eye':true,
+    'ametrine':true,
+    'ruby': true,
+    'tear':true,
+    'zircon':true,
+    'dreadstone':true,
+    'diamond':true,
+}
+
 export function createLayout(item, icon, orientation) {
     if (item) {
         let urlSearch = '&'
@@ -8,7 +20,7 @@ export function createLayout(item, icon, orientation) {
                 if (item.enchants[i].display_string && item.enchants[i].display_string.split(' ')[0] === 'Enchanted:') {
                     itemEnchant = item.enchants[i]
                 } else if (item.enchants[i]?.enchantment_slot?.id < 5) {
-                    let tempGem = item.enchants[i].source_item.id && {displayStr: item.enchants[i].display_string, id: item.enchants[i].source_item.id}
+                    let tempGem = item.enchants[i].source_item.id && {displayStr: item.enchants[i].display_string, id: item.enchants[i].source_item.id, name: item.enchants[i].source_item.name}
                     gems.push(tempGem)
                 }
             }
@@ -29,11 +41,11 @@ export function createLayout(item, icon, orientation) {
             return (
                 <>
                     <div className="item-detail-cont-right">
-                        <div className={`${item.quality.toLowerCase()}`}>{item.name}</div> 
+                        <div className={`${item.quality.toLowerCase()}`}>{item.slot === 'MAIN_HAND' || item.slot === 'RANGED' ? item.name.slice(0,32)+ (item.name.length > 32 ? '..': '') : item.name}</div> 
                         <div className="ilvl-display-right"><span className="enchant-text-right">{itemEnchant?.display_string ?? ''}</span><span>{item.itemLevel}</span></div>
                         <div>
                             {gems.length ? 
-                                gems.map(gem => <a href={`https://www.wowhead.com/wotlk/item=${gem.id}`}><img className="gem-img" src="/gems/amber.jpg"></img></a>)
+                                gems.map(gem => <a href={`https://www.wowhead.com/wotlk/item=${gem.id}`}><img className="gem-img" src={`/gems/${gemSrc[gem.name.split(' ').slice(-1)[0].toLowerCase()] ? gem.name.split(' ').slice(-1)[0] : 'amber'}.jpg`}></img></a>)
                                 :
                                 ''
                             }
@@ -55,11 +67,11 @@ export function createLayout(item, icon, orientation) {
                     </div> 
                     </a> 
                     <div className="item-detail-cont-left">
-                        <div className={`${item.quality.toLowerCase()}`}>{item.name}</div>   
+                        <div className={`${item.quality.toLowerCase()}`}>{item.slot === 'OFF_HAND' ? item.name.slice(0,32)+ (item.name.length > 32 ? '..': '') : item.name}</div>   
                         <div className="ilvl-display-left"><span>{item.itemLevel}</span><span className="enchant-text-left">{itemEnchant?.display_string ?? ''}</span></div>
                         <div>
                             {gems.length ? 
-                                gems.map(gem => <a href={`https://www.wowhead.com/wotlk/item=${gem.id}`}><img className="gem-img" src="/gems/amber.jpg"></img></a>)
+                                gems.map(gem => <a href={`https://www.wowhead.com/wotlk/item=${gem.id}`}><img className="gem-img" src={`/gems/${gemSrc[gem.name.split(' ').slice(-1)[0].toLowerCase()] ? gem.name.split(' ').slice(-1)[0] : 'amber'}.jpg`}></img></a>)
                                 :
                                 ''
                             }

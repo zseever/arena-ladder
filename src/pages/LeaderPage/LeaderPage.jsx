@@ -34,11 +34,10 @@ export default function LeaderPage() {
             <table className="ranking-table">
                 <thead>
                 <tr>
-                    <th>Character</th>
-                    <th>Realm</th>
-                    <th>Faction</th>
                     <th>Rank</th>
                     <th>Rating</th>
+                    <th>Character</th>
+                    <th>Realm</th>
                     <th>Win</th>
                     <th>Loss</th>
                     <th>Played</th>
@@ -48,13 +47,10 @@ export default function LeaderPage() {
                 <tbody>
                 {data.slice(curView[0], curView[1]).map((char,idx) => 
                     <tr className={idx % 2 === 0 ? 'even-row':'odd-row'} key={char.character.name+'-'+char.character.realm.slug}>
-                        <td><Link to='/character' className='char-link' state={{ charName: char.character.name, server: char.character.realm.slug, region: region, faction: char.faction.type}}>{char.character.name}</Link></td>
-                        {/* <td><Link to='/character' className='char-link' state={{ charName: 'Revolol', server: char.character.realm.slug, region: region, faction: char.faction.type}}>{char.character.name}</Link></td> */}
-                        <td>{char.character.realm.slug[0].toUpperCase()+char.character.realm.slug.slice(1).toLowerCase()}</td>
-                        {/* <td>{char.faction.type[0].toUpperCase()+char.faction.type.slice(1).toLowerCase()}</td> */}
-                        <td>{char.faction.type === 'ALLIANCE' ? <img src={'/alliancelogo.png'} className="alliance-logo logo-small"></img> : <img src={'/hordelogo.png'} className="horde-logo logo-small"></img> }</td>
                         <td>{char.rank}</td>
                         <td>{char.rating}</td>
+                        <td><Link to='/character' className='char-link' state={{ charName: char.character.name, server: char.character.realm.slug, region: region, faction: char.faction.type}}>{char.character.name}</Link></td>
+                        <td>{char.faction.type === 'ALLIANCE' ? <img src={'/alliancelogo.png'} className="alliance-logo logo-small"></img> : <img src={'/hordelogo.png'} className="horde-logo logo-small"></img> }   {char.character.realm.slug[0].toUpperCase()+char.character.realm.slug.slice(1).toLowerCase()}</td>
                         <td>{char.season_match_statistics.won}</td>
                         <td>{char.season_match_statistics.lost}</td>
                         <td>{char.season_match_statistics.played}</td>
