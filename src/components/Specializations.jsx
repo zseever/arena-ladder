@@ -20,10 +20,10 @@ export default function Specializations( { charDetails} ) {
         setSpecSelect(visibleSpec)
     }
 
+    console.log(charData)
 
     return (
         <div className="full-talent-cont">
-            {/* <div>Talents</div> */}
             <div className="spec-display-toggle-cont">
                 <div>{specSelect === true ? 'Primary Spec' : 'Alternate Spec'}</div>
                 <button className='spec-button' onClick={() => toggleSpecSelect()}>{specSelect === true ? 'Show Alternate Spec' : 'Show Primary Spec'}</button>
