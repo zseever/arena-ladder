@@ -32,7 +32,7 @@ export default function Parses({ charDetails }) {
                         <td className="boss-name-col">{parse.bossName}</td>
                         <td >{parse.spec}</td>
                         <td>{parse.dps.toFixed(0).toLocaleString('en-US')}</td>
-                        <td>{parse.percentile.toFixed(1)}%</td>
+                        <td style={{color: parse.percentile >= 99 ? 'rgb(239, 66, 245)' : parse.percentile >= 95 ? 'orange' : 'rgb(154, 17, 189)' }}>{parse.percentile.toFixed(1)}%</td>
                         <td>{parse.difficulty === 4 ? 'Heroic' : 'Normal'}</td>
                         <td><a href={`https://classic.warcraftlogs.com/reports/${parse.report}`}>Link</a></td>
                     </tr>

@@ -26,9 +26,9 @@ export default function LeaderPage() {
                 <button className={region === '1' ? 'selected' : ''} onClick={() => setRegion('1')}>NA</button>
                 <button className={region === '0' ? 'selected' : ''} onClick={() => setRegion('0')}>EU</button>
             </div>
-            <div>
-                <button onClick={() => setCurView([curView[0]-50,curView[1]-50])}>&lt;-</button>
-                <button onClick={() => setCurView([curView[0]+50,curView[1]+50])}>-&gt;</button>
+            <div className="flex shift-view-cont">
+                <button className="shift-view-btn" onClick={() => setCurView([curView[0]-50,curView[1]-50])}>&lt;-</button>
+                <button className="shift-view-btn" onClick={() => setCurView([curView[0]+50,curView[1]+50])}>-&gt;</button>
             </div>
             {data.length && 
             <table className="ranking-table">
@@ -50,7 +50,7 @@ export default function LeaderPage() {
                         <td>{char.rank}</td>
                         <td>{char.rating}</td>
                         <td><Link to='/character' className='char-link' state={{ charName: char.character.name, server: char.character.realm.slug, region: region, faction: char.faction.type}}>{char.character.name}</Link></td>
-                        <td>{char.faction.type === 'ALLIANCE' ? <img src={'/alliancelogo.png'} className="alliance-logo logo-small"></img> : <img src={'/hordelogo.png'} className="horde-logo logo-small"></img> }   {char.character.realm.slug[0].toUpperCase()+char.character.realm.slug.slice(1).toLowerCase()}</td>
+                        <td>{char.faction.type === 'ALLIANCE' ? <img src={'/alliancelogo.png'} alt ="alliance-logo" className="alliance-logo logo-small"></img> : <img src={'/hordelogo.png'} alt="horde-logo" className="horde-logo logo-small"></img> }   {char.character.realm.slug[0].toUpperCase()+char.character.realm.slug.slice(1).toLowerCase()}</td>
                         <td>{char.season_match_statistics.won}</td>
                         <td>{char.season_match_statistics.lost}</td>
                         <td>{char.season_match_statistics.played}</td>

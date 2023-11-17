@@ -20,7 +20,7 @@ export default function GearItem( {item, slot, orientation, region} ) {
             ItemLayout.createLayout(item, gearIcon.assets[0].value, orientation)
             :
             <>
-            <img className={`empty-gear-slot`} src={'/emptyslot.png'}></img>
+            <img className={`empty-gear-slot`} alt="empty gear slot" src={'/emptyslot.png'}></img>
             </>
             }
         </div>

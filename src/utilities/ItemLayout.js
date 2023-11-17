@@ -45,7 +45,7 @@ export function createLayout(item, icon, orientation) {
                         <div className="ilvl-display-right"><span className="enchant-text-right">{itemEnchant?.display_string ?? ''}</span><span>{item.itemLevel}</span></div>
                         <div>
                             {gems.length ? 
-                                gems.map(gem => <a href={`https://www.wowhead.com/wotlk/item=${gem.id}`}><img className="gem-img" src={`/gems/${gemSrc[gem.name.split(' ').slice(-1)[0].toLowerCase()] ? gem.name.split(' ').slice(-1)[0] : 'amber'}.jpg`}></img></a>)
+                                gems.map(gem => <a href={`https://www.wowhead.com/wotlk/item=${gem.id}`}><img className="gem-img" alt='gear-gem' src={`/gems/${gemSrc[gem.name.split(' ').slice(-1)[0].toLowerCase()] ? gem.name.split(' ').slice(-1)[0] : 'amber'}.jpg`}></img></a>)
                                 :
                                 ''
                             }
@@ -53,7 +53,7 @@ export function createLayout(item, icon, orientation) {
                     </div>
                     <a href={`https://www.wowhead.com/wotlk/item=${item.id}${urlSearch}`}>
                     <div className={`${item.quality.toLowerCase()} item-icon`}>
-                        <img src={icon}></img>
+                        <img alt={`${item.slot}-icon`} src={icon}></img>
                     </div>  
                     </a>
                 </>
@@ -63,7 +63,7 @@ export function createLayout(item, icon, orientation) {
                 <>
                     <a href={`https://www.wowhead.com/wotlk/item=${item.id}${urlSearch}`}>
                     <div className={`${item.quality.toLowerCase()} item-icon`}>
-                        <img src={icon}></img>
+                        <img alt={`${item.slot}-icon`} src={icon}></img>
                     </div> 
                     </a> 
                     <div className="item-detail-cont-left">
@@ -71,7 +71,7 @@ export function createLayout(item, icon, orientation) {
                         <div className="ilvl-display-left"><span>{item.itemLevel}</span><span className="enchant-text-left">{itemEnchant?.display_string ?? ''}</span></div>
                         <div>
                             {gems.length ? 
-                                gems.map(gem => <a href={`https://www.wowhead.com/wotlk/item=${gem.id}`}><img className="gem-img" src={`/gems/${gemSrc[gem.name.split(' ').slice(-1)[0].toLowerCase()] ? gem.name.split(' ').slice(-1)[0] : 'amber'}.jpg`}></img></a>)
+                                gems.map(gem => <a href={`https://www.wowhead.com/wotlk/item=${gem.id}`}><img className="gem-img" alt="gear-gem" src={`/gems/${gemSrc[gem.name.split(' ').slice(-1)[0].toLowerCase()] ? gem.name.split(' ').slice(-1)[0] : 'amber'}.jpg`}></img></a>)
                                 :
                                 ''
                             }
