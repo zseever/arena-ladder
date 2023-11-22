@@ -11,6 +11,7 @@ const gemSrc = {
 }
 
 export function createLayout(item, icon, orientation) {
+    console.log(item)
     if (item) {
         let urlSearch = '&'
         let gems = []
@@ -19,8 +20,8 @@ export function createLayout(item, icon, orientation) {
             for (let i=0; i < item.enchants.length; i++) {
                 if (item.enchants[i].display_string && item.enchants[i].display_string.split(' ')[0] === 'Enchanted:') {
                     itemEnchant = item.enchants[i]
-                } else if (item.enchants[i]?.enchantment_slot?.id < 5) {
-                    let tempGem = item.enchants[i].source_item.id && {displayStr: item.enchants[i].display_string, id: item.enchants[i].source_item.id, name: item.enchants[i].source_item.name}
+                } else if (item.enchants[i]?.enchantment_slot?.id < 5 && item.enchants[i]?.enchantment_slot.type !== 'TEMPORARY') {
+                    let tempGem = item.enchants[i]?.source_item?.id && {displayStr: item.enchants[i].display_string, id: item.enchants[i].source_item.id, name: item.enchants[i].source_item.name}
                     gems.push(tempGem)
                 }
             }
