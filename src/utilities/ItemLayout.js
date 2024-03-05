@@ -10,7 +10,7 @@ const gemSrc = {
     'diamond':true,
 }
 
-export function createLayout(item, icon, orientation) {
+export function createLayout(item, icon, orientation, gameVersion) {
     console.log(item)
     if (item) {
         let urlSearch = '&'
@@ -52,7 +52,8 @@ export function createLayout(item, icon, orientation) {
                             }
                         </div>
                     </div>
-                    <a href={`https://www.wowhead.com/wotlk/item=${item.id}${urlSearch}`}>
+                    {/* <a href={`https://www.wowhead.com/wotlk/item=${item.id}${urlSearch}`}> */}
+                    <a href={`https://www.wowhead.com/${gameVersion === 'sod' ? 'classic' : 'wrath'}/item=${item.id}${urlSearch}`}>
                     <div className={`${item.quality.toLowerCase()} item-icon`}>
                         <img alt={`${item.slot}-icon`} src={icon}></img>
                     </div>  
@@ -62,7 +63,8 @@ export function createLayout(item, icon, orientation) {
         } else if (orientation === 'left' || item.slot === 'OFF_HAND') {
             return (
                 <>
-                    <a href={`https://www.wowhead.com/wotlk/item=${item.id}${urlSearch}`}>
+                    {/* <a href={`https://www.wowhead.com/wotlk/item=${item.id}${urlSearch}`}> */}
+                    <a href={`https://www.wowhead.com/${gameVersion === 'sod' ? 'classic' : 'wrath'}/item=${item.id}${urlSearch}`}>
                     <div className={`${item.quality.toLowerCase()} item-icon`}>
                         <img alt={`${item.slot}-icon`} src={icon}></img>
                     </div> 

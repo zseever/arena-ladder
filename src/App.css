@@ -331,6 +331,14 @@
   color:orange;
 }
 
+.rare {
+  color:rgb(66, 66, 242);
+}
+
+.uncommon {
+  color: green;
+}
+
 .equipment-cont {
   display:flex;
   flex-direction: column;
@@ -351,9 +359,25 @@
 .item-icon {
   width:56px;
   height:56px;
-  border:3px solid purple;
   font-size:10px;
 }
+
+.item-icon.epic {
+  border:3px solid purple;
+}
+
+.item-icon.rare {
+  border:3px solid rgb(66, 66, 242);
+}
+
+.item-icon.uncommon {
+  border:3px solid green
+}
+
+.item-icon.common {
+  border:3px solid white
+}
+
 
 .spec-glyph-cont {
   border:1px solid black;
@@ -376,6 +400,12 @@
 
 .char-link:visited {
   color: rgb(0, 229, 255);
+}
+
+.game-version-button-bar > button {
+  background-color: #282c34;
+  color: rgb(0, 229, 255);
+  cursor:pointer;
 }
 
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import * as WoWAPI from '../utilities/WoWAPI'
 
-export default function CharDisplay( { charDetails, charSummary} ) {
+export default function CharDisplay( { charDetails, charSummary, gameVersion} ) {
     let title = charSummary?.active_title?.name ? charSummary.active_title.name : '%s'
     const titleDetails = charSummary && createNameTitle(title, charDetails.charName)
     const [charData, setCharData] = useState()
@@ -9,7 +9,7 @@ export default function CharDisplay( { charDetails, charSummary} ) {
 
     useEffect(() => {
         async function getData() {
-            const avatarData = await WoWAPI.fetchAvatar(charDetails.charName, charDetails.server.toLowerCase(), charDetails.region)
+            const avatarData = await WoWAPI.fetchAvatar(charDetails.charName, charDetails.server.toLowerCase(), charDetails.region, gameVersion)
             setCharData(avatarData)
         }
         getData()

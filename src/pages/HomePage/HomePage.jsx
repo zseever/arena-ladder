@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import * as WoWAPI from '../../utilities/WoWAPI'
 
-export default function HomePage() {
+export default function HomePage({ gameVersion }) {
     const [serverInp, setServerInp] = useState()
     const [charInp, setCharInp] = useState()
     const [regionInp, setRegionInp] = useState('1')
@@ -46,6 +46,7 @@ export default function HomePage() {
             </div>
             <button className="search-button" onClick={() => setTrigger(!trigger)} type="submit">Search</button>
         </div>
+        {gameVersion === 'wrath' ?
         <div>
             <div>WoW Token Prices</div>
             {tokenPrices && 
@@ -55,6 +56,10 @@ export default function HomePage() {
             </>
             }
         </div>
+        :
+        <>
+        </>
+        }
         </>
     )
 }

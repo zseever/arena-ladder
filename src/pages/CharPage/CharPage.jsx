@@ -9,7 +9,7 @@ import Pvp from '../../components/PVP'
 import Statistics from '../../components/Statistics'
 import * as WoWAPI from '../../utilities/WoWAPI';
 
-export default function CharPage() { 
+export default function CharPage({ gameVersion }) { 
     const location = useLocation()
     const state = location.state
     const [charSummary, setCharSummary] = useState()
@@ -17,7 +17,7 @@ export default function CharPage() {
 
     useEffect(() => {
         async function getData() {
-            const charSummaryData = await WoWAPI.fetchCharSummary(state.charName, state.server, state.region)
+            const charSummaryData = await WoWAPI.fetchCharSummary(state.charName, state.server, state.region, gameVersion)
             setCharSummary(charSummaryData)
         }
         getData()
@@ -35,23 +35,27 @@ export default function CharPage() {
                     <button className={`char-toggle-button ${curDisplay === 'parse' ? 'selected' : ''}`} onClick={() => setCurDisplay('parse')}>Parses</button>
                     <button className={`char-toggle-button ${curDisplay === 'stats' ? 'selected' : ''}`} onClick={() => setCurDisplay('stats')}>Statistics</button>
                 </div>
-                <CharDisplay charDetails={state} charSummary={charSummary}/>
+                <CharDisplay charDetails={state} charSummary={charSummary} gameVersion={gameVersion}/>
                 {curDisplay === 'summary' ?
                 <>
-                    <Gear charDetails={state}/>
+                    <Gear charDetails={state} gameVersion={gameVersion}/>
+                    {gameVersion === 'wrath' ? 
                     <Stats charDetails={state}/>
+                    :
+                    <></>
+                    }
                 </>
                 :
-                curDisplay === 'spec' ?
+                gameVersion === 'wrath' && curDisplay === 'spec' ?
                     <Specializations charDetails={state} />
                 :
-                curDisplay === 'parse' ?
+                gameVersion === 'wrath' && curDisplay === 'parse' ?
                     <Parses charDetails={state}/>
                 :
-                curDisplay === 'pvp' ? 
+                gameVersion === 'wrath' && curDisplay === 'pvp' ? 
                     <Pvp charDetails={state} />
                 :
-                curDisplay === 'stats' ? 
+                gameVersion === 'wrath' && curDisplay === 'stats' ? 
                     <Statistics charDetails={state} />
                 :
                 ''

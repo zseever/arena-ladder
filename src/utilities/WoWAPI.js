@@ -11,28 +11,33 @@ export async function fetchSpec(charName, server, rgn) {
     return fetchAndParse(url)
 }
 
-export async function fetchGear(charName, server, rgn) {
-    const url = buildApiURL(rgn, `/profile/wow/character/${server}/${charName.toLowerCase()}/equipment`,`profile-classic`)
+export async function fetchGear(charName, server, rgn, version) {
+    let namespace = version === 'sod' ? 'profile-classic1x' : 'profile-classic'
+    const url = buildApiURL(rgn, `/profile/wow/character/${server}/${charName.toLowerCase()}/equipment`, namespace)
     return fetchAndParse(url)
 }
 
-export async function fetchItemData(itemId) {
-    const url = buildApiURL(1,`/data/wow/item/${itemId}`,`static-3.4.3_51505-classic`)
+export async function fetchItemData(itemId, version) {
+    let namespace = version === 'sod' ? 'static-classic1x' : `static-3.4.3_51505-classic`
+    const url = buildApiURL(1,`/data/wow/item/${itemId}`, namespace)
     return fetch(url)
 }
 
-export async function fetchGearIcon(itemId, rgn) {
-    const url = buildApiURL(rgn,`/data/wow/media/item/${itemId}`, `static-3.4.3_51505-classic`)
+export async function fetchGearIcon(itemId, rgn, version) {
+    let namespace = version === 'sod' ? 'static-classic1x' : `static-3.4.3_51505-classic`
+    const url = buildApiURL(rgn,`/data/wow/media/item/${itemId}`, namespace)
     return fetchAndParse(url)
 }
 
-export async function fetchAvatar(charName, server, rgn) {
-    const url = buildApiURL(rgn, `/profile/wow/character/${server}/${charName.toLowerCase()}/character-media`, `profile-classic`)
+export async function fetchAvatar(charName, server, rgn, version) {
+    let namespace = version === 'sod' ? 'profile-classic1x' : 'profile-classic'
+    const url = buildApiURL(rgn, `/profile/wow/character/${server}/${charName.toLowerCase()}/character-media`, namespace)
     return fetchAndParse(url)
 }
 
-export async function fetchCharSummary(charName, server, rgn) {
-    const url = buildApiURL(rgn, `/profile/wow/character/${server}/${charName.toLowerCase()}`, `profile-classic` )
+export async function fetchCharSummary(charName, server, rgn, version) {
+    let namespace = version === 'sod' ? 'profile-classic1x' : 'profile-classic'
+    const url = buildApiURL(rgn, `/profile/wow/character/${server}/${charName.toLowerCase()}`, namespace )
     return fetchAndParse(url)
 }
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as WoWAPI from '../../utilities/WoWAPI.js'
 
-export default function LeaderPage() {
+export default function LeaderPage( {gameVersion} ) {
     const [data, setData] = useState([])
     const [bracket, setBracket] = useState('2v2')
     const [region, setRegion] = useState('1')
@@ -18,11 +18,13 @@ export default function LeaderPage() {
 
     return (
         <>
+        {gameVersion === 'wrath' ?
+            <>
             <h1>Player vs Player Leaderboards</h1>
             <div className="button-bar">
                 <button className={bracket === '2v2' ? 'selected' : ''} onClick={() => setBracket('2v2')}>2v2</button>
                 <button className={bracket === '3v3' ? 'selected' : ''} onClick={() => setBracket('3v3')}>3v3</button>
-                {/* <button onClick={() => setBracket('5v5')}>5v5</button> */}
+                <button className={bracket === '5v5' ? 'selected' : ''} onClick={() => setBracket('5v5')}>5v5</button>
                 <button className={region === '1' ? 'selected' : ''} onClick={() => setRegion('1')}>NA</button>
                 <button className={region === '0' ? 'selected' : ''} onClick={() => setRegion('0')}>EU</button>
             </div>
@@ -60,6 +62,10 @@ export default function LeaderPage() {
                 </tbody>
             </table>
             }
-        </>
+            </>
+            :
+            <div>No Leaderboards for Season of Discovery</div>
+        }
+            </>
     )
 }
