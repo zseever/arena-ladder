@@ -671,7 +671,8 @@ button.selected {
 }
 
 .shift-view-cont {
-  width:1280px;
+  /* width:1280px; */
+  width: 50vw;
   display: flex;
   justify-content: flex-start;
 }
