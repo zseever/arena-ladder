@@ -1,5 +1,6 @@
 const apiKey = process.env.REACT_APP_WOW_API_KEY
 let memo = {}
+//test
 
 export async function fetchData(brkt, rgn) {
     const url = buildApiURL(rgn, `/data/wow/pvp-region/${rgn}/pvp-season/8/pvp-leaderboard/${brkt}`,'dynamic-classic')
