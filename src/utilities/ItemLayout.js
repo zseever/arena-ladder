@@ -53,7 +53,7 @@ export function createLayout(item, icon, orientation, gameVersion) {
                         </div>
                     </div>
                     {/* <a href={`https://www.wowhead.com/wotlk/item=${item.id}${urlSearch}`}> */}
-                    <a href={`https://www.wowhead.com/${gameVersion === 'sod' ? 'classic' : 'wrath'}/item=${item.id}${urlSearch}`}>
+                    <a href={`https://www.wowhead.com/${gameVersion === 'sod' ? 'classic' : 'wotlk'}/item=${item.id}${urlSearch}`}>
                     <div className={`${item.quality.toLowerCase()} item-icon`}>
                         <img alt={`${item.slot}-icon`} src={icon}></img>
                     </div>  
@@ -64,7 +64,7 @@ export function createLayout(item, icon, orientation, gameVersion) {
             return (
                 <>
                     {/* <a href={`https://www.wowhead.com/wotlk/item=${item.id}${urlSearch}`}> */}
-                    <a href={`https://www.wowhead.com/${gameVersion === 'sod' ? 'classic' : 'wrath'}/item=${item.id}${urlSearch}`}>
+                    <a href={`https://www.wowhead.com/${gameVersion === 'sod' ? 'classic' : 'wotlk'}/item=${item.id}${urlSearch}`}>
                     <div className={`${item.quality.toLowerCase()} item-icon`}>
                         <img alt={`${item.slot}-icon`} src={icon}></img>
                     </div> 

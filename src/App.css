@@ -402,7 +402,7 @@
   color: rgb(0, 229, 255);
 }
 
-.game-version-button-bar > button {
+.game-version-button {
   background-color: #282c34;
   color: rgb(0, 229, 255);
   cursor:pointer;

@@ -22,6 +22,7 @@ export default function HomePage({ gameVersion }) {
             setTokenPrices(tokens)
         }
         getData()
+
     },[])
 
     

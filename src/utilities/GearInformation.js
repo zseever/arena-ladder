@@ -24,7 +24,9 @@ export async function getGearInformation(name,server,region, gameVersion) {
         itemLocation[gearLookup[property].id] = property 
     }
     result.forEach(res=> {
-        gearLookup[itemLocation[res.id]].itemLevel = res.level
+        if (itemLocation[res.id]) {
+            gearLookup[itemLocation[res.id]].itemLevel = res.level
+        }
     })
     memo[key] = gearLookup
     return memo[key]
