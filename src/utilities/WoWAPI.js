@@ -1,4 +1,3 @@
-// const apiKey = process.env.REACT_APP_WOW_API_KEY
 const apiId = process.env.REACT_APP_BLIZZ_ID
 const apiSecret = process.env.REACT_APP_BLIZZ_SECRET
 let memo = {}
